@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 
 public class SqliteSystem {
     protected static SessionFactory sessionFactory;
-    private static Logger logger= LogManager.getLogger(SqliteSystem.class);
+    private static Logger logger= LogManager.getLogger(SqliteSystem.class.getName());
 
     public static SessionFactory getSessionFactory(String databaseName) {
         Configuration config = new Configuration();
@@ -68,8 +68,7 @@ public class SqliteSystem {
         Session session = sessionFactory.openSession();
         int index = 1;
         Customer customer = session.get(Customer.class, index);
-        logger.debug("customer - " + customer.getLastName() + customer.getFirstName());
-        System.out.println(customer.getFirstName() + " " + customer.getLastName());
+        logger.info("customer - " + customer.getLastName() + customer.getFirstName());
         session.close();
     }
 
